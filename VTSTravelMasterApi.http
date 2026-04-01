@@ -1,0 +1,6 @@
+@VTSTravelMasterApi_HostAddress = http://localhost:5219
+
+GET {{VTSTravelMasterApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
