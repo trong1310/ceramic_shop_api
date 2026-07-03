@@ -16,24 +16,16 @@ namespace CeramicShopMasterApi.Databases
         {
         }
 
-        public virtual DbSet<Account> Accounts { get; set; } = null!;
-        public virtual DbSet<Category> Categories { get; set; } = null!;
-        public virtual DbSet<Order> Orders { get; set; } = null!;
-        public virtual DbSet<OrderDetail> OrderDetails { get; set; } = null!;
-        public virtual DbSet<Product> Products { get; set; } = null!;
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-592USLC\\SQLEXPRESS;Database=cernamic_shop;Trusted_Connection=True;TrustServerCertificate=True;");
-            }
-        }
+        public virtual DbSet<Accounts> Accounts { get; set; } = null!;
+        public virtual DbSet<Categories> Categories { get; set; } = null!;
+        public virtual DbSet<Images> Images { get; set; } = null!;
+        public virtual DbSet<OrderDetail> OrderDetail { get; set; } = null!;
+        public virtual DbSet<Orders> Orders { get; set; } = null!;
+        public virtual DbSet<Products> Products { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Account>(entity =>
+            modelBuilder.Entity<Accounts>(entity =>
             {
                 entity.ToTable("accounts");
 
@@ -91,7 +83,7 @@ namespace CeramicShopMasterApi.Databases
                     .IsFixedLength();
             });
 
-            modelBuilder.Entity<Category>(entity =>
+            modelBuilder.Entity<Categories>(entity =>
             {
                 entity.ToTable("categories");
 
@@ -111,7 +103,96 @@ namespace CeramicShopMasterApi.Databases
                     .HasColumnName("name");
             });
 
-            modelBuilder.Entity<Order>(entity =>
+            modelBuilder.Entity<Images>(entity =>
+            {
+                entity.ToTable("images");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.CreatedAt)
+                    .HasColumnType("datetime")
+                    .HasColumnName("created_at")
+                    .HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.IsEnable)
+                    .IsRequired()
+                    .HasColumnName("is_enable")
+                    .HasDefaultValueSql("((1))");
+
+                entity.Property(e => e.Owner)
+                    .HasMaxLength(36)
+                    .HasColumnName("owner")
+                    .IsFixedLength();
+
+                entity.Property(e => e.Path)
+                    .HasMaxLength(255)
+                    .HasColumnName("path");
+
+                entity.Property(e => e.Uuid)
+                    .HasMaxLength(36)
+                    .HasColumnName("uuid")
+                    .IsFixedLength();
+            });
+
+            modelBuilder.Entity<OrderDetail>(entity =>
+            {
+                entity.ToTable("order_detail");
+
+                entity.HasIndex(e => e.CreatedAt, "idx_created_at");
+
+                entity.HasIndex(e => e.Uuid, "idx_uq_uuid")
+                    .IsUnique();
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Amount)
+                    .HasColumnType("decimal(12, 2)")
+                    .HasColumnName("amount")
+                    .HasComment("số tiền/1 sản phẩm ");
+
+                entity.Property(e => e.CreatedAt)
+                    .HasColumnType("datetime")
+                    .HasColumnName("created_at")
+                    .HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.IsEnable)
+                    .IsRequired()
+                    .HasColumnName("is_enable")
+                    .HasDefaultValueSql("((1))");
+
+                entity.Property(e => e.OrderUuid)
+                    .HasMaxLength(36)
+                    .IsUnicode(false)
+                    .HasColumnName("order_uuid")
+                    .IsFixedLength();
+
+                entity.Property(e => e.Quantity).HasColumnName("quantity");
+
+                entity.Property(e => e.SlugProduct)
+                    .HasMaxLength(255)
+                    .IsUnicode(false)
+                    .HasColumnName("slug_product");
+
+                entity.Property(e => e.Uuid)
+                    .HasMaxLength(36)
+                    .IsUnicode(false)
+                    .HasColumnName("uuid")
+                    .IsFixedLength();
+
+                entity.HasOne(d => d.OrderUu)
+                    .WithMany(p => p.OrderDetail)
+                    .HasPrincipalKey(p => p.Uuid)
+                    .HasForeignKey(d => d.OrderUuid)
+                    .HasConstraintName("FK__order_det__order__4D5F7D71");
+
+                entity.HasOne(d => d.SlugProductNavigation)
+                    .WithMany(p => p.OrderDetail)
+                    .HasPrincipalKey(p => p.Slug)
+                    .HasForeignKey(d => d.SlugProduct)
+                    .HasConstraintName("FK__order_det__slug___4E53A1AA");
+            });
+
+            modelBuilder.Entity<Orders>(entity =>
             {
                 entity.ToTable("orders");
 
@@ -139,7 +220,6 @@ namespace CeramicShopMasterApi.Databases
 
                 entity.Property(e => e.FullName)
                     .HasMaxLength(255)
-                    .IsUnicode(false)
                     .HasColumnName("full_name");
 
                 entity.Property(e => e.IsEnable)
@@ -174,66 +254,7 @@ namespace CeramicShopMasterApi.Databases
                     .HasConstraintName("FK__orders__created___2739D489");
             });
 
-            modelBuilder.Entity<OrderDetail>(entity =>
-            {
-                entity.ToTable("order_detail");
-
-                entity.HasIndex(e => e.CreatedAt, "idx_created_at");
-
-                entity.HasIndex(e => e.Uuid, "idx_uq_uuid")
-                    .IsUnique();
-
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Amount)
-                    .HasColumnType("decimal(12, 2)")
-                    .HasColumnName("amount");
-
-                entity.Property(e => e.CreatedAt)
-                    .HasColumnType("datetime")
-                    .HasColumnName("created_at")
-                    .HasDefaultValueSql("(getdate())");
-
-                entity.Property(e => e.IsEnable)
-                    .IsRequired()
-                    .HasColumnName("is_enable")
-                    .HasDefaultValueSql("((1))");
-
-                entity.Property(e => e.OrderUuid)
-                    .HasMaxLength(36)
-                    .IsUnicode(false)
-                    .HasColumnName("order_uuid")
-                    .IsFixedLength();
-
-                entity.Property(e => e.Quantity).HasColumnName("quantity");
-
-                entity.Property(e => e.SlugProduct)
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("slug_product");
-
-                entity.Property(e => e.Uuid)
-                    .HasMaxLength(36)
-                    .IsUnicode(false)
-                    .HasColumnName("uuid")
-                    .IsFixedLength();
-
-                entity.HasOne(d => d.OrderUu)
-                    .WithMany(p => p.OrderDetails)
-                    .HasPrincipalKey(p => p.Uuid)
-                    .HasForeignKey(d => d.OrderUuid)
-                    .HasConstraintName("fk_order_detail_order");
-
-                entity.HasOne(d => d.SlugProductNavigation)
-                    .WithMany(p => p.OrderDetails)
-                    .HasPrincipalKey(p => p.Slug)
-                    .HasForeignKey(d => d.SlugProduct)
-                    .HasConstraintName("fk_order_detail_products");
-            });
-
-            modelBuilder.Entity<Product>(entity =>
+            modelBuilder.Entity<Products>(entity =>
             {
                 entity.ToTable("products");
 

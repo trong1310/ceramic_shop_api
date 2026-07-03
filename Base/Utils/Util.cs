@@ -1,4 +1,4 @@
-﻿
+
 using System.ComponentModel;
 using System.Globalization;
 using System.Reflection;
@@ -65,5 +65,41 @@ namespace CeramicsShopMasterApi.Base.Utils
 				return sb.ToString();
 			}
 		}
-	}
+
+        public static string GenerateSlug(string name)
+        {
+            // chuẩn hóa để tách dấu
+            string normalizedString = name.Normalize(NormalizationForm.FormD);
+            StringBuilder stringBuilder = new StringBuilder();
+            foreach (var item in normalizedString)
+            {
+                if (CharUnicodeInfo.GetUnicodeCategory(item) != UnicodeCategory.NonSpacingMark)
+                {
+                    stringBuilder.Append(item);
+                }
+            }
+
+            string diacritics = stringBuilder.ToString().Normalize(NormalizationForm.FormD);
+
+            // xử lý riêng chữ đ/Đ
+            diacritics = diacritics.Replace('đ', 'd').Replace('Đ', 'd');
+
+            // bỏ ký tự đặc biệt, chỉ giữ a-z A-Z 0-9, khoảng trắng, dấu -
+            string specialCharacters = Regex.Replace(diacritics, @"[^a-zA-Z0-9\s-]", string.Empty);
+
+            // thay khoảng trắng bằng dấu -
+            string slug = Regex.Replace(specialCharacters, @"\s+", "-").Trim();
+            slug = Regex.Replace(slug, @"-+", "-");
+
+            // bỏ dấu - ở đầu/cuối
+            slug = slug.Trim('-');
+            return slug.ToLowerInvariant();
+        }
+        public static int RandomPassword()
+        {
+            Random random = new Random();
+            return random.Next(100000, 999999);
+        }
+
+    }
 }

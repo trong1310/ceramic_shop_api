@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace CeramicShopMasterApi.Databases
 {
-    public partial class Product
+    public partial class Products
     {
-        public Product()
+        public Products()
         {
-            OrderDetails = new HashSet<OrderDetail>();
+            OrderDetail = new HashSet<OrderDetail>();
         }
 
         public int Id { get; set; }
@@ -19,7 +19,7 @@ namespace CeramicShopMasterApi.Databases
         public bool? IsEnable { get; set; }
         public DateTime CreatedAt { get; set; }
 
-        public virtual Category Categories { get; set; } = null!;
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual Categories Categories { get; set; } = null!;
+        public virtual ICollection<OrderDetail> OrderDetail { get; set; }
     }
 }

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace CeramicShopMasterApi.Databases
 {
-    public partial class Account
+    public partial class Accounts
     {
-        public Account()
+        public Accounts()
         {
-            Orders = new HashSet<Order>();
+            Orders = new HashSet<Orders>();
         }
 
         public int Id { get; set; }
@@ -21,6 +21,6 @@ namespace CeramicShopMasterApi.Databases
         public string Email { get; set; } = null!;
         public string Phone { get; set; } = null!;
 
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Orders> Orders { get; set; }
     }
 }

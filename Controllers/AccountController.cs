@@ -39,7 +39,7 @@ namespace CeramicShopMasterApi.Controllers
             var resp = new BaseResponseMessage<AccLoginResp>();
             try
             {
-                var user = new Account();
+                var user = new Accounts();
                 user = await _context.Accounts.FirstOrDefaultAsync(u => u.Username == request.UserName);
                 if (user == null)
                 {

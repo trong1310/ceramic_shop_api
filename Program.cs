@@ -28,6 +28,9 @@ builder.Services.AddDbContext<MasterDBContext>(options =>
     options.UseSqlServer(appSetting.ConnectionStrings));
 builder.Services.AddJwtAuthentication();
 
+// Configuration Swagger
+builder.Services.AddSwaggerConfiguration("CeramicShop Master Api", "v1");
+
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
@@ -41,6 +44,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
