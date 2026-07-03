@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace VTSTravelMasterApi.Configurations
+namespace CeramicsShopMasterApi.Configurations
 {
     [Description("Định nghĩa đường dẫn")]
     public class BaseUrl

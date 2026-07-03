@@ -1,4 +1,7 @@
-﻿using VTSTravelMasterApi.Settings;
+using CeramicsShopMasterApi.Settings;
+using CeramicShopMasterApi.Databases;
+using CeramicsShopMasterApi.Configurations;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,8 +23,10 @@ var _tokenSetting = _tokenSettingSection.Get<JwtTokenSettings>();
 //
 GlobalSetting.Include(appSetting, _tokenSetting);
 
-//// Cấu hình Mysql
-//builder.Services.ConfigureMySql(appSetting.ConnectionStrings);
+// Đăng ký MasterDBContext và JWT Authentication
+builder.Services.AddDbContext<MasterDBContext>(options =>
+    options.UseSqlServer(appSetting.ConnectionStrings));
+builder.Services.AddJwtAuthentication();
 
 builder.Services.AddSwaggerGen();
 
@@ -30,8 +35,8 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-	app.UseSwagger();
-	app.UseSwaggerUI();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
@@ -42,6 +47,6 @@ app.MapControllers();
 app.UseCors("CorsPolicy");
 app.UseCors(x =>
 {
-	x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+    x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
 });
 app.Run();

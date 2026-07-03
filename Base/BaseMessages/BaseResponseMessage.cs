@@ -1,7 +1,7 @@
-﻿using VTSTravelMasterApi.Base.Utils;
-using VTSTravelMasterApi.Settings;
+﻿using CeramicsShopMasterApi.Base.Utils;
+using CeramicsShopMasterApi.Settings;
 
-namespace VTSTravelMasterApi.Base.BaseMessages
+namespace CeramicsShopMasterApi.Base.BaseMessages
 {
     public class BaseResponseMessage
     {

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace VTSTravelMasterApi.SecurityManagers
+namespace CeramicsShopMasterApi.SecurityManagers
 {
     public class SecurityRequirementsOperationFilter : IOperationFilter
     {

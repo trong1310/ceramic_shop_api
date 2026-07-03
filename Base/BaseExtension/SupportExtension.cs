@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
-using VTSTravelMasterApi.Base.BaseMessages;
-using VTSTravelMasterApi.Base.Utils;
-using VTSTravelMasterApi.Settings;
+using CeramicsShopMasterApi.Base.BaseMessages;
+using CeramicsShopMasterApi.Base.Utils;
+using CeramicsShopMasterApi.Settings;
 
-namespace VTSTravelMasterApi.Base.Extensions
+namespace CeramicsShopMasterApi.Base.Extensions
 {
     public static class SupportExtension
     {

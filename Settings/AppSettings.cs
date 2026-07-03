@@ -1,4 +1,4 @@
-﻿namespace VTSTravelMasterApi.Settings
+﻿namespace CeramicsShopMasterApi.Settings
 {
     public class AppSettings
     {

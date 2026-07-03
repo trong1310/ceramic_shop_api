@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace VTSTravelMasterApi.Enums
+namespace CeramicsShopMasterApi.Enums
 {
 	public enum edIsEnable
 	{

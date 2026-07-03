@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text;
-using VTSTravelMasterApi.Base.Pages;
+using CeramicsShopMasterApi.Base.Pages;
 
-namespace VTSTravelMasterApi.Base.BaseExtension
+namespace CeramicsShopMasterApi.Base.BaseExtension
 {
     public static class BasicExtension
     {

@@ -1,6 +1,8 @@
-@VTSTravelMasterApi_HostAddress = http://localhost:5219
+@CeramicsShopMasterApi_HostAddress = http://localhost:5219
 
-GET {{VTSTravelMasterApi_HostAddress}}/weatherforecast/
+GET {{CeramicsShopMasterApi_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+
+

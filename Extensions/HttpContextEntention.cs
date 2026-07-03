@@ -1,4 +1,4 @@
-﻿namespace VTSTravelMasterApi.Extensions
+﻿namespace CeramicsShopMasterApi.Extensions
 {
     public static class HttpContextEntention
     {

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 
 
-namespace VTSTravelMasterApi.Configurations
+namespace CeramicsShopMasterApi.Configurations
 {
     public static class MySqlServiceConfig
     {

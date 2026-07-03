@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
-using VTSTravelMasterApi.Models;
+using CeramicsShopMasterApi.Models;
 
-namespace VTSTravelMasterApi.SecurityManagers
+namespace CeramicsShopMasterApi.SecurityManagers
 {
     public interface IJwtAuthenticationManager
     {

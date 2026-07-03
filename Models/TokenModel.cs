@@ -1,4 +1,4 @@
-﻿namespace VTSTravelMasterApi.Models
+﻿namespace CeramicsShopMasterApi.Models
 {
     public class TokenModel
     {

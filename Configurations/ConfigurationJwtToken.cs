@@ -2,10 +2,10 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using VTSTravelMasterApi.SecurityManagers;
-using VTSTravelMasterApi.Settings;
+using CeramicsShopMasterApi.SecurityManagers;
+using CeramicsShopMasterApi.Settings;
 
-namespace VTSTravelMasterApi.Configurations
+namespace CeramicsShopMasterApi.Configurations
 {
     public static class ConfigurationJwtToken
     {

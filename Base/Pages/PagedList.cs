@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace VTSTravelMasterApi.Base.Pages
+namespace CeramicsShopMasterApi.Base.Pages
 {
     public class PagedList<T> : List<T>
     {

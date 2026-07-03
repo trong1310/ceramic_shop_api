@@ -3,7 +3,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace VTSTravelMasterApi.Configurations
+namespace CeramicsShopMasterApi.Configurations
 {
     public class ConfigureSwaggerOptions : IConfigureNamedOptions<SwaggerGenOptions>
     {
@@ -46,7 +46,7 @@ namespace VTSTravelMasterApi.Configurations
         {
             var info = new OpenApiInfo()
             {
-                Title = "VTSTravelMasterApi",
+                Title = "CeramicsShopMasterApi",
                 Version = desc.ApiVersion.ToString()
             };
 

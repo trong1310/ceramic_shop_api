@@ -1,12 +1,12 @@
-﻿using VTSTravelMasterApi.Models;
-using VTSTravelMasterApi.Settings;
+﻿using CeramicsShopMasterApi.Models;
+using CeramicsShopMasterApi.Settings;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace VTSTravelMasterApi.SecurityManagers
+namespace CeramicsShopMasterApi.SecurityManagers
 {
     public class JwtAuthenticationManager : IJwtAuthenticationManager
     {

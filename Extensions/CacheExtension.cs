@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
 
-namespace VTSTravelMasterApi.Extensions
+namespace CeramicsShopMasterApi.Extensions
 {
     public class CacheExtension
     {

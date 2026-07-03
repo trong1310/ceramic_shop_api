@@ -1,4 +1,4 @@
-﻿namespace VTSTravelMasterApi.Base.BaseMessages
+﻿namespace CeramicsShopMasterApi.Base.BaseMessages
 {
     public class BaseRequestMessage
     {

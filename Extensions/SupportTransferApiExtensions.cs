@@ -1,11 +1,11 @@
-﻿using VTSTravelMasterApi.Base.BaseExtension;
-using VTSTravelMasterApi.Configurations;
+﻿using CeramicsShopMasterApi.Base.BaseExtension;
+using CeramicsShopMasterApi.Configurations;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Web;
 
-namespace VTSTravelMasterApi.Extensions
+namespace CeramicsShopMasterApi.Extensions
 {
     public static class SupportTransferApiExtensions
     {

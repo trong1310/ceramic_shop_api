@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
-using VTSTravelMasterApi.SecurityManagers;
+using CeramicsShopMasterApi.SecurityManagers;
 
-namespace VTSTravelMasterApi.Configurations
+namespace CeramicsShopMasterApi.Configurations
 {
 	public static class SwaggerConfiguration
 	{

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace VTSTravelMasterApi.Dto.v1
+namespace CeramicShopMasterApi.Models.ResponseModel
 {
     public class LoginDto
     {

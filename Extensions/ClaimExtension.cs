@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 
-namespace VTSTravelMasterApi.Extensions
+namespace CeramicsShopMasterApi.Extensions
 {
 	public static class ClaimExtension
 	{

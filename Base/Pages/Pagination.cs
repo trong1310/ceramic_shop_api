@@ -1,4 +1,4 @@
-﻿namespace VTSTravelMasterApi.Base.Pages
+﻿namespace CeramicsShopMasterApi.Base.Pages
 {
     /// <summary>
     /// Thông tin hiển thị phân trang
